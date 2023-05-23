@@ -11,16 +11,22 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@700&family=Raleway:wght@700&family=Roboto:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="styles/overlay.css">
+    <link rel="stylesheet" href="styles/configuration.css">
   </head>
   <body>
-    <header>
+    <div id="backdrop">
+
+    </div>
+    <header id="main-header">
       <h1>Play Tic, Tac, Toe</h1>
       <p>
         Built with HTML, CSS, Javascript and - of course, lots of enthusiasm!
       </p>
     </header>
     <main>
-      <aside>
+      <aside class="modal" id="config-overlay">
         <h2>Choose your name</h2>
         <form>
           <div>
@@ -28,8 +34,8 @@
             <input type="text" name="playername" id="playername" />
           </div>
           <div>
-            <button type="button">Cancel</button>
-            <button type="submit">Confirm</button>
+            <button type="button" class="btn btn-alt">Cancel</button>
+            <button type="submit" class="btn">Confirm</button>
           </div>
         </form>
       </aside>
@@ -40,7 +46,7 @@
               <h2>Player 1</h2>
               <h3>Play Name</h3>
               <p>X</p>
-              <button>Edit</button>
+              <button class="btn btn-alt">Edit</button>
             </article>
           </li>
           <li>
@@ -48,11 +54,11 @@
               <h2>Player 2</h2>
               <h3>Play Name</h3>
               <p>O</p>
-              <button>Edit</button>
+              <button class="btn btn-alt">Edit</button>
             </article>
           </li>
         </ol>
-        <button id>Start New Game</button>
+        <button class="btn">Start New Game</button>
       </section>
       <section id="active-game">
         <article>
