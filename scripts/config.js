@@ -9,6 +9,9 @@ function closePlayerConfig() {
   backdropElement.style.display = "none";
   formElement.firstElementChild.classList.remove("error");
   errorsOutputElement.textContent = "";
+
+  //the next leave the name as is and closes the modal
+  formElement.firstElementChild.lastElementChild.value = ""
 }
 
 function updatePlayerName() {
@@ -29,6 +32,20 @@ function savePlayerConfig(event) {
     return;
   }
 
-  const updatedPlayerDataElement = document.getElementById('player-' + editedPlayer + '-data');
-  updatedPlayerDataElement.children[1].textContent = enteredPlayname
+  const updatedPlayerDataElement = document.getElementById(
+    "player-" + editedPlayer + "-data"
+  );
+  updatedPlayerDataElement.children[1].textContent = enteredPlayname;
+
+//   if (editedPlayer === 1) {
+//     players[0].name = enteredPlayname;
+//   } else {
+//     players[1].name = enteredPlayname;
+//   }
+//while the abov commented out code works, there's even a shorter more concise way to write the it
+
+players[editedPlayer -1].name = enteredPlayname;
+
+// the next line closes the modal automatically
+closePlayerConfig();
 }
