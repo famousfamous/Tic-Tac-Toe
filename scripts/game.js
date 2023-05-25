@@ -5,19 +5,19 @@ function resetGameStatus() {
   gameIsOver = false;
   gameOverElement.firstElementChild.innerHTML =
     'You won, <span id="active-player-name">PLAY NAME</span>!';
-    gameOverElement.style.display = 'none';
+  gameOverElement.style.display = "none";
 
-    //now resetting all the game data
-    let gameBoardIndex = 0;
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++){
-            gameData[i][j] = 0;
-            const gameBoardItemElement = gameBoardElement.children[gameBoardIndex]
-            gameBoardItemElement.textContent = "";
-            gameBoardItemElement.classList.remove('disabled');
-            gameBoardIndex++;
-        }
+  //now resetting all the game data
+  let gameBoardIndex = 0;
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      gameData[i][j] = 0;
+      const gameBoardItemElement = gameBoardElement.children[gameBoardIndex];
+      gameBoardItemElement.textContent = "";
+      gameBoardItemElement.classList.remove("disabled");
+      gameBoardIndex++;
     }
+  }
 }
 
 function startNewGame() {
@@ -28,7 +28,6 @@ function startNewGame() {
 
   //before call the active player element, we reset the game
   resetGameStatus();
-
 
   activePlayerNameElement.textContent = players[activePlayer].name;
   gameAreaElement.style.display = "block";
@@ -50,6 +49,7 @@ function selectGameFiled(event) {
   if (event.target.tagName !== "LI" || gameIsOver) {
     return;
   }
+
   const selectedField = event.target;
   //this will log each play data by col or row into the 3d array in app.js
   const selectedColumn = selectedField.dataset.col - 1;
@@ -60,17 +60,17 @@ function selectGameFiled(event) {
     return;
   }
 
-  selectedField.textContent = players[activePlayer].Symbol;
+  selectedField.textContent = players[activePlayer].symbol;
   selectedField.classList.add("disabled");
 
   gameData[selectedRow][selectedColumn] = activePlayer + 1;
 
-  //this code will log the winner so far
-  const winnderID = checkForGameOver();
+  //this code will log the  so far
+  const winnerId = checkForGameOver();
 
   //now call the endgame function
-  if (winnderID !== 0) {
-    endGame(winnderID);
+  if (winnerId !== 0) {
+    endGame(winnerId);
   }
 
   //make sure to count the number of rounds before the next players takes the turn
@@ -130,13 +130,13 @@ function checkForGameOver() {
 }
 
 //the endgame code
-function endGame(winnderID) {
-    gameIsOver = true;
+function endGame(winnerId) {
+  gameIsOver = true;
   gameOverElement.style.display = "block";
 
-  if (winnderID > 0) {
+  if (winnerId > 0) {
     //get the winner's name by fetching it from the players array.
-    const winnerName = players[winnderID - 1].name;
+    const winnerName = players[winnerId - 1].name;
     gameOverElement.firstElementChild.textContent =
       "You won, " + winnerName + "!";
   } else {
