@@ -10,10 +10,21 @@
   margin: 0.5rem 0;
 }
 
+
 .form-control label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
+}
+
+.error label {
+  color: rgb(136, 2, 2);
+}
+
+.error input {
+  border-color: rgb(136, 2, 2);
+  color: rgb(136, 2, 2);
+  background-color: rgb(253, 219, 219);
 }
 
 .form-control input {
